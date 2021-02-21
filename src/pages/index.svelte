@@ -1,12 +1,10 @@
 <script>
-  import RoutifyIntro from "./example/_components/RoutifyIntro.svelte";
   import { metatags } from "@roxi/routify";
   metatags.title = "My Routify app";
   metatags.description = "Description coming soon...";
 
   import { FirebaseApp, User, Doc, Collection } from "sveltefire";
   import { getContext } from "svelte";
-  import Navbar from "_navbar.svelte";
   const firebase = getContext("firebase").getFirebase();
 
   const googleProvider = new firebase.auth.GoogleAuthProvider();
