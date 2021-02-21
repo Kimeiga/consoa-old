@@ -7,3 +7,5 @@ src/tmp/
 .netlify
 assets/build
 .vercel
+
+.vercel

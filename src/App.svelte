@@ -34,6 +34,20 @@
     firebase.app(); // if already initialized, use that one
   }
 
+  // import("firebase").then((firebase) => {
+  //   firebase.initializeApp({
+  //     /* firebaseConfig goes here */
+  //   });
+  //   firebase
+  //     .firestore()
+  //     .collection("items")
+  //     .doc("yJd1Fs5Ampttq6QKBoYF")
+  //     .get()
+  //     .then((doc) => {
+  //       // do stuff with Firestore data
+  //     });
+  // });
+
   import halfmoon from "halfmoon";
   onMount(() => {
     halfmoon.onDOMContentLoaded();

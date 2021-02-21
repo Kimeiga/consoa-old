@@ -10,7 +10,7 @@ import getConfig from '@roxi/routify/lib/utils/config'
 import autoPreprocess from 'svelte-preprocess'
 import postcssImport from 'postcss-import'
 import { injectManifest } from 'rollup-plugin-workbox'
-
+import externals from 'rollup-plugin-node-externals'
 
 const { distDir } = getConfig() // use Routify's distDir for SSOT
 const assetsDir = 'assets'
@@ -21,6 +21,9 @@ const production = !process.env.ROLLUP_WATCH;
 // clear previous builds
 removeSync(distDir)
 removeSync(buildDir)
+
+// change the regex to include the packages you want to exclude
+const regex = /firebase\/(app|firestore)/;
 
 
 const serve = () => ({
@@ -48,6 +51,15 @@ export default {
         chunkFileNames:`[name]${production && '-[hash]' || ''}.js`
     },
     plugins: [
+        externals({
+            deps: true, 
+            exclude: [
+                'sveltefire',
+                'svelte',
+                "@roxi/routify",
+                'firebase'
+              ]
+        }),
         svelte({
             dev: !production, // run-time checks      
             // Extract component CSS — better performance
