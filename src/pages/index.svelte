@@ -6,26 +6,19 @@
 
   import { FirebaseApp, User, Doc, Collection } from "sveltefire";
   import { getContext } from "svelte";
+  import Navbar from "_components/Navbar.svelte";
   const firebase = getContext("firebase").getFirebase();
 
   const googleProvider = new firebase.auth.GoogleAuthProvider();
 
   let postText = "";
-
-  // Import JS library
-  import halfmoon from "halfmoon";
-  import { onMount } from "svelte";
-
-  onMount(() => {
-    halfmoon.onDOMContentLoaded();
-  });
 </script>
 
-<main class="container">
+<main>
   <!-- 1. 🔥 Firebase App -->
   <!-- 2. 😀 Get the current user -->
   <User let:user let:auth>
-    <nav class="nav">
+    <!-- <nav class="nav">
       <div class="nav-left">
         <a class="active">🧑‍🍼</a>
       </div>
@@ -36,7 +29,9 @@
         <a>✉</a>
         <a href="/user"><img src={user.photoURL} alt="profile" /></a>
       </div>
-    </nav>
+    </nav> -->
+
+    <Navbar profileImgURL={user.photoURL} />
 
     <div slot="signed-out">
       <div
