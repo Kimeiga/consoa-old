@@ -6,7 +6,7 @@
 
   import { FirebaseApp, User, Doc, Collection } from "sveltefire";
   import { getContext } from "svelte";
-  import Navbar from "_components/Navbar.svelte";
+  import Navbar from "_navbar.svelte";
   const firebase = getContext("firebase").getFirebase();
 
   const googleProvider = new firebase.auth.GoogleAuthProvider();
@@ -31,7 +31,7 @@
       </div>
     </nav> -->
 
-    <Navbar profileImgURL={user.photoURL} />
+    <!-- <Navbar profileImgURL={user.photoURL} /> -->
 
     <div slot="signed-out">
       <div

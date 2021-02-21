@@ -1,6 +1,7 @@
 <script>
   import { Router } from "@roxi/routify";
   import { routes } from "../.routify/routes";
+  import { onMount } from "svelte";
 
   if (
     window.matchMedia &&
@@ -33,10 +34,28 @@
     firebase.app(); // if already initialized, use that one
   }
 
-  require("halfmoon/css/halfmoon-variables.min.css");
   import halfmoon from "halfmoon";
+  onMount(() => {
+    halfmoon.onDOMContentLoaded();
+  });
 </script>
 
-<FirebaseApp {firebase}>
-  <Router {routes} />
-</FirebaseApp>
+<!-- Modals go here -->
+<!-- Reference: https://www.gethalfmoon.com/docs/modal -->
+
+<div
+  id="page-wrapper"
+  class="page-wrapper with-navbar with-sidebar with-navbar-fixed-bottom with-transitions"
+  data-sidebar-type="overlayed-all"
+  data-sidebar-hidden="hidden"
+  data-dm-shortcut-enabled="true"
+  data-sidebar-shortcut-enabled="true"
+>
+  <FirebaseApp {firebase}>
+    <Router {routes} />
+  </FirebaseApp>
+</div>
+
+<style global>
+  @import "../assets/global.css";
+</style>
