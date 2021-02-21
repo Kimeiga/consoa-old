@@ -56,7 +56,9 @@
     ]
   },
   "dependencies": {
+    "chota": "^0.8.0",
     "firebase": "^8.2.7",
+    "halfmoon": "^1.1.1",
     "sveltefire": "^0.1.5"
   }
 }
